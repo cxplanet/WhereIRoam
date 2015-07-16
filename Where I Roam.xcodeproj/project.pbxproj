@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC2790A01B586F9500BC23BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC27909F1B586F9500BC23BE /* AppDelegate.swift */; };
+		EC2790A31B586F9500BC23BE /* Where_I_Roam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC2790A11B586F9500BC23BE /* Where_I_Roam.xcdatamodeld */; };
+		EC2790A51B586F9500BC23BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790A41B586F9500BC23BE /* ViewController.swift */; };
+		EC2790A81B586F9500BC23BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2790A61B586F9500BC23BE /* Main.storyboard */; };
+		EC2790AA1B586F9500BC23BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2790A91B586F9500BC23BE /* Images.xcassets */; };
+		EC2790AD1B586F9500BC23BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2790AB1B586F9500BC23BE /* LaunchScreen.xib */; };
+		EC2790B91B586F9600BC23BE /* Where_I_RoamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790B81B586F9600BC23BE /* Where_I_RoamTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC2790B31B586F9600BC23BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC2790921B586F9400BC23BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC2790991B586F9400BC23BE;
+			remoteInfo = "Where I Roam";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EC27909A1B586F9400BC23BE /* Where I Roam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where I Roam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC27909E1B586F9500BC23BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC27909F1B586F9500BC23BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EC2790A21B586F9500BC23BE /* Where_I_Roam.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Where_I_Roam.xcdatamodel; sourceTree = "<group>"; };
+		EC2790A41B586F9500BC23BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC2790A71B586F9500BC23BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC2790A91B586F9500BC23BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC2790AC1B586F9500BC23BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EC2790B21B586F9600BC23BE /* Where I RoamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Where I RoamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC2790B71B586F9600BC23BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC2790B81B586F9600BC23BE /* Where_I_RoamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Where_I_RoamTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC2790971B586F9400BC23BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2790AF1B586F9600BC23BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC2790911B586F9400BC23BE = {
+			isa = PBXGroup;
+			children = (
+				EC27909C1B586F9400BC23BE /* Where I Roam */,
+				EC2790B51B586F9600BC23BE /* Where I RoamTests */,
+				EC27909B1B586F9400BC23BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC27909B1B586F9400BC23BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC27909A1B586F9400BC23BE /* Where I Roam.app */,
+				EC2790B21B586F9600BC23BE /* Where I RoamTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC27909C1B586F9400BC23BE /* Where I Roam */ = {
+			isa = PBXGroup;
+			children = (
+				EC27909F1B586F9500BC23BE /* AppDelegate.swift */,
+				EC2790A41B586F9500BC23BE /* ViewController.swift */,
+				EC2790A61B586F9500BC23BE /* Main.storyboard */,
+				EC2790A91B586F9500BC23BE /* Images.xcassets */,
+				EC2790AB1B586F9500BC23BE /* LaunchScreen.xib */,
+				EC2790A11B586F9500BC23BE /* Where_I_Roam.xcdatamodeld */,
+				EC27909D1B586F9500BC23BE /* Supporting Files */,
+			);
+			path = "Where I Roam";
+			sourceTree = "<group>";
+		};
+		EC27909D1B586F9500BC23BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC27909E1B586F9500BC23BE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC2790B51B586F9600BC23BE /* Where I RoamTests */ = {
+			isa = PBXGroup;
+			children = (
+				EC2790B81B586F9600BC23BE /* Where_I_RoamTests.swift */,
+				EC2790B61B586F9600BC23BE /* Supporting Files */,
+			);
+			path = "Where I RoamTests";
+			sourceTree = "<group>";
+		};
+		EC2790B61B586F9600BC23BE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC2790B71B586F9600BC23BE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC2790991B586F9400BC23BE /* Where I Roam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC2790BC1B586F9600BC23BE /* Build configuration list for PBXNativeTarget "Where I Roam" */;
+			buildPhases = (
+				EC2790961B586F9400BC23BE /* Sources */,
+				EC2790971B586F9400BC23BE /* Frameworks */,
+				EC2790981B586F9400BC23BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Where I Roam";
+			productName = "Where I Roam";
+			productReference = EC27909A1B586F9400BC23BE /* Where I Roam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC2790B11B586F9600BC23BE /* Where I RoamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC2790BF1B586F9600BC23BE /* Build configuration list for PBXNativeTarget "Where I RoamTests" */;
+			buildPhases = (
+				EC2790AE1B586F9600BC23BE /* Sources */,
+				EC2790AF1B586F9600BC23BE /* Frameworks */,
+				EC2790B01B586F9600BC23BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC2790B41B586F9600BC23BE /* PBXTargetDependency */,
+			);
+			name = "Where I RoamTests";
+			productName = "Where I RoamTests";
+			productReference = EC2790B21B586F9600BC23BE /* Where I RoamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC2790921B586F9400BC23BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "James Lorenzo";
+				TargetAttributes = {
+					EC2790991B586F9400BC23BE = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					EC2790B11B586F9600BC23BE = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = EC2790991B586F9400BC23BE;
+					};
+				};
+			};
+			buildConfigurationList = EC2790951B586F9400BC23BE /* Build configuration list for PBXProject "Where I Roam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EC2790911B586F9400BC23BE;
+			productRefGroup = EC27909B1B586F9400BC23BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC2790991B586F9400BC23BE /* Where I Roam */,
+				EC2790B11B586F9600BC23BE /* Where I RoamTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC2790981B586F9400BC23BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2790A81B586F9500BC23BE /* Main.storyboard in Resources */,
+				EC2790AD1B586F9500BC23BE /* LaunchScreen.xib in Resources */,
+				EC2790AA1B586F9500BC23BE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2790B01B586F9600BC23BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC2790961B586F9400BC23BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2790A51B586F9500BC23BE /* ViewController.swift in Sources */,
+				EC2790A31B586F9500BC23BE /* Where_I_Roam.xcdatamodeld in Sources */,
+				EC2790A01B586F9500BC23BE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC2790AE1B586F9600BC23BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2790B91B586F9600BC23BE /* Where_I_RoamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC2790B41B586F9600BC23BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC2790991B586F9400BC23BE /* Where I Roam */;
+			targetProxy = EC2790B31B586F9600BC23BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EC2790A61B586F9500BC23BE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC2790A71B586F9500BC23BE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EC2790AB1B586F9500BC23BE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC2790AC1B586F9500BC23BE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EC2790BA1B586F9600BC23BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC2790BB1B586F9600BC23BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EC2790BD1B586F9600BC23BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Where I Roam/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC2790BE1B586F9600BC23BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Where I Roam/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EC2790C01B586F9600BC23BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Where I RoamTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Where I Roam.app/Where I Roam";
+			};
+			name = Debug;
+		};
+		EC2790C11B586F9600BC23BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Where I RoamTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Where I Roam.app/Where I Roam";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC2790951B586F9400BC23BE /* Build configuration list for PBXProject "Where I Roam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2790BA1B586F9600BC23BE /* Debug */,
+				EC2790BB1B586F9600BC23BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC2790BC1B586F9600BC23BE /* Build configuration list for PBXNativeTarget "Where I Roam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2790BD1B586F9600BC23BE /* Debug */,
+				EC2790BE1B586F9600BC23BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EC2790BF1B586F9600BC23BE /* Build configuration list for PBXNativeTarget "Where I RoamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC2790C01B586F9600BC23BE /* Debug */,
+				EC2790C11B586F9600BC23BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EC2790A11B586F9500BC23BE /* Where_I_Roam.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EC2790A21B586F9500BC23BE /* Where_I_Roam.xcdatamodel */,
+			);
+			currentVersion = EC2790A21B586F9500BC23BE /* Where_I_Roam.xcdatamodel */;
+			path = Where_I_Roam.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EC2790921B586F9400BC23BE /* Project object */;
+}
