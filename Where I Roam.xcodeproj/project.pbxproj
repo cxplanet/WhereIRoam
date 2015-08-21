@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC03FE801B791F9D0081D540 /* POIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03FE7F1B791F9D0081D540 /* POIViewController.swift */; };
+		EC03FE821B7921130081D540 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03FE811B7921130081D540 /* Constants.swift */; };
+		EC0D16251B5EC7B400F8F3BB /* ObservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */; };
+		EC1E940E1B7129CC00D8DDB4 /* TransitAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E940D1B7129CC00D8DDB4 /* TransitAnalyzer.swift */; };
 		EC2790A01B586F9500BC23BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC27909F1B586F9500BC23BE /* AppDelegate.swift */; };
 		EC2790A31B586F9500BC23BE /* Where_I_Roam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC2790A11B586F9500BC23BE /* Where_I_Roam.xcdatamodeld */; };
 		EC2790A51B586F9500BC23BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790A41B586F9500BC23BE /* ViewController.swift */; };
@@ -14,6 +18,15 @@
 		EC2790AA1B586F9500BC23BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2790A91B586F9500BC23BE /* Images.xcassets */; };
 		EC2790AD1B586F9500BC23BE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2790AB1B586F9500BC23BE /* LaunchScreen.xib */; };
 		EC2790B91B586F9600BC23BE /* Where_I_RoamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790B81B586F9600BC23BE /* Where_I_RoamTests.swift */; };
+		EC2790CB1B59754600BC23BE /* HealthKitMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790CA1B59754600BC23BE /* HealthKitMgr.swift */; };
+		EC2790CD1B59866D00BC23BE /* RoamingMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790CC1B59866D00BC23BE /* RoamingMgr.swift */; };
+		EC2790CF1B59A6E500BC23BE /* Observation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790CE1B59A6E500BC23BE /* Observation.swift */; };
+		EC2790D61B59CD2B00BC23BE /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790D41B59CD2B00BC23BE /* CoreDataHelper.swift */; };
+		EC2790D71B59CD2B00BC23BE /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2790D51B59CD2B00BC23BE /* CoreDataStore.swift */; };
+		EC2E95AC1B60347400B61E0F /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2E95AB1B60347400B61E0F /* StringUtils.swift */; };
+		EC6D6EED1B8029A50077ADB4 /* VisitEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D6EEC1B8029A50077ADB4 /* VisitEventCell.swift */; };
+		ECD966321B75088D008D24A4 /* VisitEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD966311B75088D008D24A4 /* VisitEvent.swift */; };
+		ECD966341B752C57008D24A4 /* POI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD966331B752C57008D24A4 /* POI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC03FE7F1B791F9D0081D540 /* POIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewController.swift; sourceTree = "<group>"; };
+		EC03FE811B7921130081D540 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationsViewController.swift; sourceTree = "<group>"; };
+		EC1E940D1B7129CC00D8DDB4 /* TransitAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitAnalyzer.swift; sourceTree = "<group>"; };
 		EC27909A1B586F9400BC23BE /* Where I Roam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where I Roam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC27909E1B586F9500BC23BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC27909F1B586F9500BC23BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +55,15 @@
 		EC2790B21B586F9600BC23BE /* Where I RoamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Where I RoamTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2790B71B586F9600BC23BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC2790B81B586F9600BC23BE /* Where_I_RoamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Where_I_RoamTests.swift; sourceTree = "<group>"; };
+		EC2790CA1B59754600BC23BE /* HealthKitMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitMgr.swift; sourceTree = "<group>"; };
+		EC2790CC1B59866D00BC23BE /* RoamingMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoamingMgr.swift; sourceTree = "<group>"; };
+		EC2790CE1B59A6E500BC23BE /* Observation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observation.swift; sourceTree = "<group>"; };
+		EC2790D41B59CD2B00BC23BE /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		EC2790D51B59CD2B00BC23BE /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		EC2E95AB1B60347400B61E0F /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		EC6D6EEC1B8029A50077ADB4 /* VisitEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitEventCell.swift; sourceTree = "<group>"; };
+		ECD966311B75088D008D24A4 /* VisitEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitEvent.swift; sourceTree = "<group>"; };
+		ECD966331B752C57008D24A4 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +105,26 @@
 		EC27909C1B586F9400BC23BE /* Where I Roam */ = {
 			isa = PBXGroup;
 			children = (
+				EC2790CE1B59A6E500BC23BE /* Observation.swift */,
 				EC27909F1B586F9500BC23BE /* AppDelegate.swift */,
 				EC2790A41B586F9500BC23BE /* ViewController.swift */,
+				EC2790D41B59CD2B00BC23BE /* CoreDataHelper.swift */,
+				EC2790D51B59CD2B00BC23BE /* CoreDataStore.swift */,
+				EC2790CA1B59754600BC23BE /* HealthKitMgr.swift */,
+				EC2790CC1B59866D00BC23BE /* RoamingMgr.swift */,
+				EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */,
 				EC2790A61B586F9500BC23BE /* Main.storyboard */,
 				EC2790A91B586F9500BC23BE /* Images.xcassets */,
 				EC2790AB1B586F9500BC23BE /* LaunchScreen.xib */,
 				EC2790A11B586F9500BC23BE /* Where_I_Roam.xcdatamodeld */,
 				EC27909D1B586F9500BC23BE /* Supporting Files */,
+				EC2E95AB1B60347400B61E0F /* StringUtils.swift */,
+				EC1E940D1B7129CC00D8DDB4 /* TransitAnalyzer.swift */,
+				ECD966311B75088D008D24A4 /* VisitEvent.swift */,
+				ECD966331B752C57008D24A4 /* POI.swift */,
+				EC03FE7F1B791F9D0081D540 /* POIViewController.swift */,
+				EC03FE811B7921130081D540 /* Constants.swift */,
+				EC6D6EEC1B8029A50077ADB4 /* VisitEventCell.swift */,
 			);
 			path = "Where I Roam";
 			sourceTree = "<group>";
@@ -159,11 +198,14 @@
 		EC2790921B586F9400BC23BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "James Lorenzo";
 				TargetAttributes = {
 					EC2790991B586F9400BC23BE = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = E9E5623VEY;
 					};
 					EC2790B11B586F9600BC23BE = {
 						CreatedOnToolsVersion = 6.4;
@@ -215,9 +257,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD966321B75088D008D24A4 /* VisitEvent.swift in Sources */,
 				EC2790A51B586F9500BC23BE /* ViewController.swift in Sources */,
+				EC0D16251B5EC7B400F8F3BB /* ObservationsViewController.swift in Sources */,
+				EC2790CB1B59754600BC23BE /* HealthKitMgr.swift in Sources */,
 				EC2790A31B586F9500BC23BE /* Where_I_Roam.xcdatamodeld in Sources */,
+				EC03FE821B7921130081D540 /* Constants.swift in Sources */,
+				EC1E940E1B7129CC00D8DDB4 /* TransitAnalyzer.swift in Sources */,
+				EC2790D61B59CD2B00BC23BE /* CoreDataHelper.swift in Sources */,
 				EC2790A01B586F9500BC23BE /* AppDelegate.swift in Sources */,
+				EC6D6EED1B8029A50077ADB4 /* VisitEventCell.swift in Sources */,
+				EC2E95AC1B60347400B61E0F /* StringUtils.swift in Sources */,
+				EC03FE801B791F9D0081D540 /* POIViewController.swift in Sources */,
+				EC2790CF1B59A6E500BC23BE /* Observation.swift in Sources */,
+				EC2790D71B59CD2B00BC23BE /* CoreDataStore.swift in Sources */,
+				ECD966341B752C57008D24A4 /* POI.swift in Sources */,
+				EC2790CD1B59866D00BC23BE /* RoamingMgr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +335,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -346,8 +402,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Where I Roam/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vulcan.Where-I-Roam";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -356,8 +414,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Where I Roam/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vulcan.Where-I-Roam";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -376,6 +436,7 @@
 				);
 				INFOPLIST_FILE = "Where I RoamTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vulcan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Where I Roam.app/Where I Roam";
 			};
@@ -391,6 +452,7 @@
 				);
 				INFOPLIST_FILE = "Where I RoamTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vulcan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Where I Roam.app/Where I Roam";
 			};
@@ -415,6 +477,7 @@
 				EC2790BE1B586F9600BC23BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC2790BF1B586F9600BC23BE /* Build configuration list for PBXNativeTarget "Where I RoamTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +486,7 @@
 				EC2790C11B586F9600BC23BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
