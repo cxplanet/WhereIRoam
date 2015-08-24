@@ -27,11 +27,11 @@ class VisitEvent: NSManagedObject
     @NSManaged var addressInfo: String
     @NSManaged var hasDeparture: Bool
     
-//    func initFromVisitData(data: [String]!) {
-//        self.longitude          = (data[3] as NSString).doubleValue
-//        self.latitude          = (data[2] as NSString).doubleValue
-//    }
-//    
+    func initFromVisitData(data: [String]!) {
+        self.longitude          = (data[3] as NSString).doubleValue
+        self.latitude          = (data[2] as NSString).doubleValue
+    }
+    
 //    func initFromArchivedVisitData(data: [String]!) {
 //        self.longitude          = (data[3] as NSString).doubleValue
 //        self.latitude          = (data[2] as NSString).doubleValue
@@ -39,7 +39,7 @@ class VisitEvent: NSManagedObject
 //    
     func initFromCLVisit(data: CLVisit!) {
         self.longitude = data.coordinate.longitude
-        self.latitude = data.coordinate.longitude
+        self.latitude = data.coordinate.latitude
         self.arrival = data.arrivalDate
         self.hasDeparture = (self.arrival.timeIntervalSinceDate(self.departure) > 0)
         
