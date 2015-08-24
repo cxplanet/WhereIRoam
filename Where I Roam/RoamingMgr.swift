@@ -106,11 +106,11 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
     // need to determine if this is a viable path
     public func locationManager(manager: CLLocationManager, didVisit visit: CLVisit) {
         if visit.horizontalAccuracy > HORIZONTAL_OBSERVATION_ACCURACY {
-            createVisitEvent(visit)
+            handleVisitEvent(visit)
         }
     }
     
-    func createVisitEvent(visitData: CLVisit)
+    func handleVisitEvent(visitData: CLVisit)
     {
         //first fire an event
         let dateTime = NSDate()
@@ -119,8 +119,21 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         visitNotify.alertBody = "Data: \(visitData)"
         visitNotify.fireDate = dateTime
         UIApplication.sharedApplication().scheduleLocalNotification(visitNotify)
+        createNewVisit(visitData)
         
         
+//        if (visitData.departureDate.isEqualToDate(NSDate.distantFuture()))
+//        {
+//            createNewVisit(visitData)
+//        } else
+//        {
+//            updateExistingVisit(visitData)
+//        }
+    }
+    
+    // no departure date, so assume its a new visit
+    func createNewVisit(visitData : CLVisit)
+    {
         let visitLocation = CLLocation(latitude: visitData.coordinate.latitude, longitude: visitData.coordinate.longitude)
         geoCoder.reverseGeocodeLocation(visitLocation, completionHandler: {(placemarks, error) -> Void in
             if let placemark = placemarks?.first {
@@ -134,6 +147,26 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
                 NSLog("Problem with the data received from geocoder")
             }
         })
+    }
+    
+    func updateExistingVisit(visitData : CLVisit)
+    {
+        var fetchResults : [VisitEvent];
+        
+        let fetchRequest = NSFetchRequest(entityName: "VisitEvent")
+        let predicate = NSPredicate(format: "arrival contains[search] %@", visitData.arrivalDate)
+        fetchRequest.predicate = predicate
+        do {
+            fetchResults = try self.dataHelper!.managedObjectContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
+            if let visitEvent = fetchResults.first
+            {
+                visitEvent.departure = visitData.departureDate
+            }
+            self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
+            
+        } catch let fetchError as NSError {
+            print("unable to update existing visit event error: \(fetchError.localizedDescription)")
+        }
     }
     
     public func enableBackgroundMode() {
@@ -182,11 +215,18 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
             fetchResults = try self.dataHelper!.managedObjectContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
             for visitObj in fetchResults {
                 let visit = visitObj as VisitEvent
-//                if let _ = visit.arrival as NSDate? {
-//                    print("[ \"\(visit.arrival)\", \"\(visit.departure)\", \"\(visit.longitude)\", \"\(visit.latitude)\", \"\(visit.addressInfo)\"],")
+                let today = NSDate()
+                let yesterday = today.dateByAddingTimeInterval(-6 * 60 * 60)
+                if visit.departure.isEqualToDate(NSDate.distantFuture()) && visit.arrival.timeIntervalSinceDate(yesterday) < 0 {
+                    print("User arrived, but has not left:")
+                    print(visit.debugDescription)
+        //            self.dataHelper!.managedObjectContext!.deleteObject(visitObj)
+                }
+//                    else {
+                    print(visit.debugDescription)
 //                }
-                print(visit.debugDescription)
             }
+      //     self.dataHelper!.saveContext(self.dataHelper!.managedObjectContext!)
             print("VisitEvent count: \(fetchResults.count)")
         } catch let fetchError as NSError {
             print("getVisitEvents error: \(fetchError.localizedDescription)")

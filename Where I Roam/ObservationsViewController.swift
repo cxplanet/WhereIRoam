@@ -41,7 +41,8 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataHelper!.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "VisitEventCache")
+        // TODO - get a good caching strategy in place. I'm omitting it for right now
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataHelper!.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
