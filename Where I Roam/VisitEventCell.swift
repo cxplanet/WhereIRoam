@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 
 class VisitEventCell : UITableViewCell {
-   // @IBOutlet UILabel name
+
+    @IBOutlet var arrivalDateLabel : UILabel?
+    @IBOutlet var departureDateLabel : UILabel?
+    @IBOutlet var addressInfoLabel : UILabel?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
 }

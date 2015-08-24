@@ -100,11 +100,11 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ObservationCell", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("VisitEventCell", forIndexPath: indexPath) as! VisitEventCell
         let obsItem = fetchedResultsController.objectAtIndexPath(indexPath) as! VisitEvent
-        cell.textLabel!.text = NSDateFormatter.localizedStringFromDate(obsItem.arrival, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-        cell.detailTextLabel!.text = obsItem.addressInfo
-            //String("stayed \(Int(interval)) seconds")
+        cell.arrivalDateLabel?.text = NSDateFormatter.localizedStringFromDate(obsItem.arrival, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
+        cell.departureDateLabel?.text = NSDateFormatter.localizedStringFromDate(obsItem.departure, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
+        cell.addressInfoLabel?.text = obsItem.addressInfo
         return cell
     }
     
