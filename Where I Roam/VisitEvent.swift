@@ -25,7 +25,6 @@ class VisitEvent: NSManagedObject
     @NSManaged var arrival: NSDate
     @NSManaged var departure: NSDate
     @NSManaged var addressInfo: String
-    @NSManaged var hasDeparture: Bool
     
     func initFromVisitData(data: [String]!) {
         self.longitude          = (data[3] as NSString).doubleValue
@@ -41,8 +40,15 @@ class VisitEvent: NSManagedObject
         self.longitude = data.coordinate.longitude
         self.latitude = data.coordinate.latitude
         self.arrival = data.arrivalDate
-        self.hasDeparture = (self.arrival.timeIntervalSinceDate(self.departure) > 0)
-        
+        self.departure = data.departureDate
+    }
+    
+    func hasArrivalTime() -> Bool{
+        return (self.departure.isEqualToDate(NSDate.distantPast()) == false)
+    }
+    
+    func hasDepartureTime() -> Bool{
+        return (self.departure.isEqualToDate(NSDate.distantFuture()) == false)
     }
     
     func visitIntervalInSeconds() -> Double
