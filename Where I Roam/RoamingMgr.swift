@@ -213,20 +213,17 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         let fetchRequest = NSFetchRequest(entityName: "VisitEvent")
         do {
             fetchResults = try self.dataHelper!.managedObjectContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
+            let today = NSDate()
+            let yesterday = today.dateByAddingTimeInterval(-16 * 24 * 60 * 60)
             for visitObj in fetchResults {
                 let visit = visitObj as VisitEvent
-                let today = NSDate()
-                let yesterday = today.dateByAddingTimeInterval(-6 * 60 * 60)
-                if visit.departure.isEqualToDate(NSDate.distantFuture()) && visit.arrival.timeIntervalSinceDate(yesterday) < 0 {
-                    print("User arrived, but has not left:")
-                    print(visit.debugDescription)
-        //            self.dataHelper!.managedObjectContext!.deleteObject(visitObj)
+                if yesterday.timeIntervalSinceDate(visit.departure) > 0 {
+                    print("Long ago")
+//                    print(visit.debugDescription)
+                    self.dataHelper!.managedObjectContext!.deleteObject(visitObj)
                 }
-//                    else {
-                    print(visit.debugDescription)
-//                }
             }
-      //     self.dataHelper!.saveContext(self.dataHelper!.managedObjectContext!)
+           self.dataHelper!.saveContext(self.dataHelper!.managedObjectContext!)
             print("VisitEvent count: \(fetchResults.count)")
         } catch let fetchError as NSError {
             print("getVisitEvents error: \(fetchError.localizedDescription)")
