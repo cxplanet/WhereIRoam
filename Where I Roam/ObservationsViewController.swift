@@ -61,19 +61,27 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Observations"
+        //self.title = "Visits"
+        
+        // translucent navbar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true;
+        self.navigationController?.view.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor();
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: , target: <#T##AnyObject?#>, action: <#T##Selector#>)
         
         // refresh support
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl!)
-       // self.refreshControl!.addTarget(self, action: "refreshObservations", forControlEvents: UIControlEvents.ValueChanged)
-        
+
         // core data context is held by appdelegate
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         self.dataHelper = appDelegate!.cdh
         
+        // mapview delegation
         mapView.delegate = self
         mapView.showsUserLocation = true
     }
@@ -102,8 +110,12 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("VisitEventCell", forIndexPath: indexPath) as! VisitEventCell
         let obsItem = fetchedResultsController.objectAtIndexPath(indexPath) as! VisitEvent
-        cell.arrivalDateLabel?.text = NSDateFormatter.localizedStringFromDate(obsItem.arrival, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-        cell.departureDateLabel?.text = NSDateFormatter.localizedStringFromDate(obsItem.departure, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
+        let arrivalTime = NSDateFormatter.localizedStringFromDate(obsItem.arrival, dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+        if obsItem.departure.isEqualToDate(NSDate.distantFuture()) == false {
+            cell.visitDateLabel?.text = String(format: "Arrived %@, stayed %@", arguments: [arrivalTime, StringUtils.convertTimeIntervalToHoursMinutes(obsItem.visitIntervalInSeconds())])
+        } else {
+            cell.visitDateLabel?.text = String(format: "Arrived %@", arguments: [arrivalTime])
+        }
         cell.addressInfoLabel?.text = obsItem.addressInfo
         return cell
     }
@@ -119,7 +131,20 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
             let currentSection = sections[section] 
             return currentSection.name
         }
+        
         return nil
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let obsItem = fetchedResultsController.objectAtIndexPath(indexPath)
+            self.dataHelper!.managedObjectContext!.deleteObject(obsItem as! NSManagedObject)
+            self.dataHelper!.saveContext(self.dataHelper!.managedObjectContext!)
+        }
     }
     
     func refresh(sender:AnyObject)
@@ -168,5 +193,7 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         let selectedRow = tableView.indexPathForSelectedRow
         tableView.deselectRowAtIndexPath(selectedRow!, animated: true)
     }
+    
+
     
 }

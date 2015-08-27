@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39D4B093F823AD241670FECD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 340DFD77F3BDFE1F026D609E /* libPods.a */; };
 		EC03FE801B791F9D0081D540 /* POIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03FE7F1B791F9D0081D540 /* POIViewController.swift */; };
 		EC03FE821B7921130081D540 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03FE811B7921130081D540 /* Constants.swift */; };
 		EC0D16251B5EC7B400F8F3BB /* ObservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14270DC5A9DF6D08FE531753 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		340DFD77F3BDFE1F026D609E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC03FE7F1B791F9D0081D540 /* POIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewController.swift; sourceTree = "<group>"; };
 		EC03FE811B7921130081D540 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationsViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		EC6D6EEC1B8029A50077ADB4 /* VisitEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitEventCell.swift; sourceTree = "<group>"; };
 		ECD966311B75088D008D24A4 /* VisitEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitEvent.swift; sourceTree = "<group>"; };
 		ECD966331B752C57008D24A4 /* POI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POI.swift; sourceTree = "<group>"; };
+		F45E33F2BEACFDCBA22D9720 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39D4B093F823AD241670FECD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +89,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1863D5C2E80FA07986E1F01F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F45E33F2BEACFDCBA22D9720 /* Pods.debug.xcconfig */,
+				14270DC5A9DF6D08FE531753 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1A15A89FF04BB0E804B6A252 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				340DFD77F3BDFE1F026D609E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC2790911B586F9400BC23BE = {
 			isa = PBXGroup;
 			children = (
 				EC27909C1B586F9400BC23BE /* Where I Roam */,
 				EC2790B51B586F9600BC23BE /* Where I RoamTests */,
 				EC27909B1B586F9400BC23BE /* Products */,
+				1863D5C2E80FA07986E1F01F /* Pods */,
+				1A15A89FF04BB0E804B6A252 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC2790BC1B586F9600BC23BE /* Build configuration list for PBXNativeTarget "Where I Roam" */;
 			buildPhases = (
+				30BC5CC8F72FCC87F28EB4B3 /* Check Pods Manifest.lock */,
 				EC2790961B586F9400BC23BE /* Sources */,
 				EC2790971B586F9400BC23BE /* Frameworks */,
 				EC2790981B586F9400BC23BE /* Resources */,
+				8D78FC87C38A40463401173C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +277,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30BC5CC8F72FCC87F28EB4B3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8D78FC87C38A40463401173C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC2790961B586F9400BC23BE /* Sources */ = {
@@ -400,9 +459,11 @@
 		};
 		EC2790BD1B586F9600BC23BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F45E33F2BEACFDCBA22D9720 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Where I Roam/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vulcan.Where-I-Roam";
@@ -412,9 +473,11 @@
 		};
 		EC2790BE1B586F9600BC23BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14270DC5A9DF6D08FE531753 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Where I Roam/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vulcan.Where-I-Roam";

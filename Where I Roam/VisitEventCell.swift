@@ -11,8 +11,8 @@ import UIKit
 
 class VisitEventCell : UITableViewCell {
 
-    @IBOutlet var arrivalDateLabel : UILabel?
-    @IBOutlet var departureDateLabel : UILabel?
+    @IBOutlet var visitTimeRangeLabel : UILabel?
+    @IBOutlet var visitDateLabel : UILabel?
     @IBOutlet var addressInfoLabel : UILabel?
     
     required init?(coder aDecoder: NSCoder) {
