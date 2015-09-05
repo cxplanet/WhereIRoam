@@ -1,11 +1,3 @@
-//
-//  CoreDataStore.swift
-//  SwiftCoreDataSimpleDemo
-//
-//  Created by CHENHAO on 14-7-9.
-//  Copyright (c) 2014 CHENHAO. All rights reserved.
-//
-
 import Foundation
 import CoreData
 
@@ -28,26 +20,23 @@ class CoreDataStore: NSObject{
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Where_I_Roam.sqlite")
-        var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
+        // try to automerge
+        let mergeOptions = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
-        } catch var error1 as NSError {
-            error = error1
-            coordinator = nil
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: mergeOptions)
+        } catch {
             // Report any error we got.
-            let dict = NSMutableDictionary()
+            var dict = [String: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            dict[NSUnderlyingErrorKey] = error
-            // JAYL fix this.
-//            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
-//            // Replace this with code to handle the error appropriately.
-//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            
+            dict[NSUnderlyingErrorKey] = error as NSError
+            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            // Replace this with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
-        } catch {
-            fatalError()
         }
         
         return coordinator

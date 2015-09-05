@@ -43,6 +43,10 @@ class VisitEvent: NSManagedObject
         self.departure = data.departureDate
     }
     
+    func hasPlace() -> Bool {
+        return false
+    }
+    
     func hasArrivalTime() -> Bool{
         return (self.departure.isEqualToDate(NSDate.distantPast()) == false)
     }

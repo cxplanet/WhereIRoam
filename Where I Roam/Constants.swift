@@ -13,6 +13,7 @@ import Foundation
 struct FourSquare {
     static let appID = "W2CIFVMZKFMCCQYRE3CJXWDUOHSSMNRPGZVWU4FTRSS54TDV"
     static let appSecret = "BW5OKIY4RYWPOTDMMA4N1JOXBTJISJHCT1LNO5IM5C5RDQ2K"
+    static let redirectUrl = "testapp123://foursquare"
 }
 
 struct Flickr {

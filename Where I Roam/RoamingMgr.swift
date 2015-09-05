@@ -50,7 +50,7 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         
         setupLocationManager()
         setupMotionManager()
-        dumpVisitEventData()
+        //dumpVisitEventData()
     }
     
     public func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -121,19 +121,20 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         visitNotify.alertBody = "Data: \(visitData)"
         visitNotify.fireDate = dateTime
         UIApplication.sharedApplication().scheduleLocalNotification(visitNotify)
-        createNewVisit(visitData)
-        
-        
-//        if (visitData.departureDate.isEqualToDate(NSDate.distantFuture()))
-//        {
-//            createNewVisit(visitData)
-//        } else
-//        {
-//            updateExistingVisit(visitData)
-//        }
+
+        // XXX TODO - create FSM to deterine whether a visit has begun/ended. CLVisit
+        // is easy to use, but still needs some tweaking when used in iOS 8
+        if (visitData.departureDate.isEqualToDate(NSDate.distantFuture()))
+        {
+            createNewVisit(visitData)
+        } else
+        {
+            updateExistingVisit(visitData)
+        }
     }
     
     // no departure date, so assume its a new visit
+    // XXX TODO - 
     func createNewVisit(visitData : CLVisit)
     {
         let visitLocation = CLLocation(latitude: visitData.coordinate.latitude, longitude: visitData.coordinate.longitude)
@@ -159,12 +160,12 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         let predicate = NSPredicate(format: "arrival == %@", visitData.arrival)
         fetchRequest.predicate = predicate
         do {
-            fetchResults = try self.dataHelper!.managedObjectContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
+            fetchResults = try self.dataHelper!.backgroundContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
             if let _ = fetchResults.first
             {
-                print("retrieved visit")
+                print("matched existing visit")
             } else {
-                print("**** unable to retrieve visit")
+                print("**** unable to match existing visit, creating new one")
             }
             self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
             
@@ -173,7 +174,9 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         }
     }
     
-    func updateExistingVisit(visitData : CLVisit)
+    
+    // Apple's CLVisit framework. We'll replace this with a geo aware FSM
+    func updateExistingVisit(visitData: CLVisit)
     {
         var fetchResults : [VisitEvent];
         
@@ -181,16 +184,47 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         let predicate = NSPredicate(format: "arrival == %@", visitData.arrivalDate)
         fetchRequest.predicate = predicate
         do {
-            fetchResults = try self.dataHelper!.managedObjectContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
+            fetchResults = try self.dataHelper!.backgroundContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
             if let visitEvent = fetchResults.first
             {
                 visitEvent.departure = visitData.departureDate
+                self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
+            } else {
+                // can't find the initial object, assume
+                createNewVisit(visitData)
             }
-            self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
-            
         } catch let fetchError as NSError {
             print("unable to update existing visit event error: \(fetchError.localizedDescription)")
         }
+    }
+    
+    func findNearestPlace(latitude: Double, longitude: Double) -> VisitEvent?
+    {
+        // todo - have this search and return a Place
+        var fetchResults : [VisitEvent];
+        
+        let fetchRequest = NSFetchRequest(entityName: "VisitEvent")
+        
+        // FIXME, this does not take into account longitude overlap
+        let latMax = latitude + 0.003
+        let latMin = latitude - 0.003
+        let lonMax = longitude + 0.003
+        let lonMin = longitude - 0.003
+        
+        let predicate = NSPredicate(format: "latitude > %f and latitude < %f and longitude > %f and longitude < %f", latMin, latMax, lonMin, lonMax)
+        fetchRequest.predicate = predicate
+        let start = NSDate()
+        do {
+            fetchResults = try self.dataHelper!.backgroundContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
+            for visit in fetchResults {
+                print("\(visit.arrival), \(visit.departure), \(visit.latitude.doubleValue), \(visit.longitude.doubleValue), \(visit.addressInfo.debugDescription)")
+            }
+        } catch let fetchError as NSError {
+            print("unable to update existing visit event error: \(fetchError.localizedDescription)")
+        }
+        print("elapsed \(start.timeIntervalSinceNow)")
+        
+        return nil
     }
     
     public func enableBackgroundMode() {
@@ -238,8 +272,8 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
             fetchResults = try self.dataHelper!.managedObjectContext!.executeFetchRequest(fetchRequest) as! [VisitEvent]
             for visitObj in fetchResults {
                 let visit = visitObj as VisitEvent
-                print("[\"\(visit.arrival)\", \"\(visit.departure)\", \"\(visit.latitude.doubleValue)\", \"\(visit.longitude.doubleValue)\", \(visit.addressInfo.debugDescription)],")
-                updateExistingVisitEvent(visit)
+                // print("[\"\(visit.arrival)\", \"\(visit.departure)\", \"\(visit.latitude.doubleValue)\", \"\(visit.longitude.doubleValue)\", \(visit.addressInfo.debugDescription)],")
+                findNearestPlace(visit.latitude.doubleValue, longitude: visit.longitude.doubleValue)
             }
             print("VisitEvent count: \(fetchResults.count)")
         } catch let fetchError as NSError {
@@ -279,6 +313,15 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
             })
         }
         
+    }
+    
+    func addPlaces() {
+        let newPlace: Place = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: self.dataHelper!.backgroundContext!) as! Place
+        newPlace.name = "Home"; newPlace.latitude = 47.688482; newPlace.longitude = 122.373542; newPlace.visitCount = 0;
+        let newPlace2: Place = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: self.dataHelper!.backgroundContext!) as! Place
+        newPlace2.name = "Home"; newPlace2.latitude = 47.688482; newPlace2.longitude = 122.373542; newPlace.visitCount = 0;
+        
+        self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
     }
     
     let visits:[[String]] = [

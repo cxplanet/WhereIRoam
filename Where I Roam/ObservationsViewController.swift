@@ -20,6 +20,7 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
     var currLocation : CLLocation?
     var hasShownUser = false
     var refreshControl : UIRefreshControl?
+    var currIndexPath: NSIndexPath?
     
     var fetchedResultsController: NSFetchedResultsController {
         if _fetchedResultsController != nil {
@@ -89,6 +90,14 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
     func addRadiusOverlayForGeoFence(location: CLLocation){
         mapView.addOverlay(MKCircle(centerCoordinate: location.coordinate, radius: 100))
     }
+
+    // XXX old school way to resize. Need to see if there is a better way in iOS7 and above
+//    internal func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if self.currIndexPath == indexPath {
+//            return 200;
+//        }
+//        return 64;
+//    }
     
     // MARK: TableView Data Source
     internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -101,7 +110,6 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
     internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
-            print("Total of \(currentSection.numberOfObjects) objects")
             return currentSection.numberOfObjects
         }
         return 0
@@ -124,6 +132,15 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         let obsItem = fetchedResultsController.objectAtIndexPath(indexPath) as! VisitEvent
         let coor = CLLocation(latitude: obsItem.latitude.doubleValue, longitude: obsItem.longitude.doubleValue)
         updateMapView(coor)
+        // XXX TODO - re-enable this code
+//        if obsItem.hasPlace() {
+//            showVisitDetails(obsItem)
+//        } else {
+//            showPlacePicker(coor)
+//        }
+//        self.currIndexPath = indexPath
+//        self.tableView.beginUpdates()
+//        self.tableView.endUpdates()
     }
     
     internal func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -147,6 +164,18 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    func showVisitDetails(visit: VisitEvent) {
+        
+        
+    }
+    
+    func showPlacePicker(location: CLLocation)
+    {
+        let picker = Storyboard.create("placePicker") as! PlacePickerViewController
+        picker.currLoc = location
+        self.navigationController?.presentViewController(picker, animated: true, completion: nil)
+    }
+    
     func refresh(sender:AnyObject)
     {
         self.tableView.reloadData()
@@ -158,6 +187,7 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.reloadData()
     }
     
+    // todo - remove this functionality, it's going to drain the battery
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation)
     {
         currLocation = userLocation.location
@@ -193,7 +223,27 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         let selectedRow = tableView.indexPathForSelectedRow
         tableView.deselectRowAtIndexPath(selectedRow!, animated: true)
     }
-    
+}
 
+class VisitEventCell : UITableViewCell {
     
+    @IBOutlet var visitTimeRangeLabel : UILabel?
+    @IBOutlet var visitDateLabel : UILabel?
+    @IBOutlet var addressInfoLabel : UILabel?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.contentView.layer.cornerRadius = 5.0
+        self.contentView.layer.masksToBounds = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+}
+
+class Storyboard: UIStoryboard {
+    class func create(name: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(name)
+    }
 }

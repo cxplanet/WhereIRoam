@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// TODO Make this a FSM
 class TransitAnalyzer: NSObject
 {
     
@@ -17,7 +18,6 @@ class TransitAnalyzer: NSObject
     
     var dataHelper : CoreDataHelper?
     var appDelegate : AppDelegate?
-    var currGeoFence: POI?
     
     override init() {
         

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import QuadratTouch
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,12 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     // xxx - is this necessary? hold a reference to the singleton
     var roamMgr: RoamingMgr?
+    var foursquareCfg: Configuration!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         NSLog("application did finish ")
         // Override point for customization after application launch.
-         roamMgr = RoamingMgr.sharedInstance
+        roamMgr = RoamingMgr.sharedInstance
+        let client = Client(clientID: FourSquare.appID,
+            clientSecret: FourSquare.appSecret,
+            redirectURL: FourSquare.redirectUrl)
+        foursquareCfg = Configuration(client:client)
+        Session.setupSharedSessionWithConfiguration(foursquareCfg)
+        
         return true
     }
 
