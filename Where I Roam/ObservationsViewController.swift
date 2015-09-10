@@ -82,6 +82,11 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         self.dataHelper = appDelegate!.cdh
         
+        setupMapview()
+    }
+    
+    func setupMapview()
+    {
         // mapview delegation
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -132,7 +137,7 @@ class ObservationsViewController: UIViewController, UITableViewDelegate, UITable
         let obsItem = fetchedResultsController.objectAtIndexPath(indexPath) as! VisitEvent
         let coor = CLLocation(latitude: obsItem.latitude.doubleValue, longitude: obsItem.longitude.doubleValue)
         updateMapView(coor)
-        // XXX TODO - re-enable this code
+        // XXX TODO - re-enable this code 
 //        if obsItem.hasPlace() {
 //            showVisitDetails(obsItem)
 //        } else {

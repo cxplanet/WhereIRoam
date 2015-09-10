@@ -11,6 +11,7 @@
 		EC03FE801B791F9D0081D540 /* POIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03FE7F1B791F9D0081D540 /* POIViewController.swift */; };
 		EC03FE821B7921130081D540 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC03FE811B7921130081D540 /* Constants.swift */; };
 		EC0D16251B5EC7B400F8F3BB /* ObservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */; };
+		EC1A6D821BA0C44E00E9BA20 /* IFTTTRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1A6D811BA0C44E00E9BA20 /* IFTTTRulesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EC1E940E1B7129CC00D8DDB4 /* TransitAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E940D1B7129CC00D8DDB4 /* TransitAnalyzer.swift */; };
 		EC2790A01B586F9500BC23BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC27909F1B586F9500BC23BE /* AppDelegate.swift */; };
 		EC2790A31B586F9500BC23BE /* Where_I_Roam.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC2790A11B586F9500BC23BE /* Where_I_Roam.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		EC03FE7F1B791F9D0081D540 /* POIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIViewController.swift; sourceTree = "<group>"; };
 		EC03FE811B7921130081D540 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EC0D16241B5EC7B400F8F3BB /* ObservationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationsViewController.swift; sourceTree = "<group>"; };
+		EC1A6D811BA0C44E00E9BA20 /* IFTTTRulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IFTTTRulesViewController.swift; sourceTree = "<group>"; };
 		EC1E940D1B7129CC00D8DDB4 /* TransitAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitAnalyzer.swift; sourceTree = "<group>"; };
 		EC27909A1B586F9400BC23BE /* Where I Roam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Where I Roam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC27909E1B586F9500BC23BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				EC6D6EEC1B8029A50077ADB4 /* TableCells.swift */,
 				ECF48A871B8FBC390095AF47 /* PlacePicker.swift */,
 				ECE619231B9A3034006D1A06 /* MyPlacesViewController.swift */,
+				EC1A6D811BA0C44E00E9BA20 /* IFTTTRulesViewController.swift */,
 			);
 			path = "Where I Roam";
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				EC03FE801B791F9D0081D540 /* POIViewController.swift in Sources */,
 				EC2790CF1B59A6E500BC23BE /* Observation.swift in Sources */,
 				EC2790D71B59CD2B00BC23BE /* CoreDataStore.swift in Sources */,
+				EC1A6D821BA0C44E00E9BA20 /* IFTTTRulesViewController.swift in Sources */,
 				ECD966341B752C57008D24A4 /* Place.swift in Sources */,
 				ECF48A881B8FBC390095AF47 /* PlacePicker.swift in Sources */,
 				EC2790CD1B59866D00BC23BE /* RoamingMgr.swift in Sources */,

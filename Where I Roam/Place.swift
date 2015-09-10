@@ -23,22 +23,12 @@ class Place: NSManagedObject
     @NSManaged var name: String
     @NSManaged var longitude: NSNumber
     @NSManaged var latitude: NSNumber
-//    @NSManaged var picsUrl: String
-    @NSManaged var visitCount: Int32
-    
-//    init(fromName placeName: String, lat: Double, lon: Double) {
-//        super.init()
-//        name = placeName
-//        latitude = lat
-//        longitude = lon
-//        picsUrl = ""
-//        visitCount = 0
-//    }
+    @NSManaged var visited: Int32
     
     func initFromPlace(place: Place) {
         self.name = place.name
         self.latitude = place.latitude
         self.longitude = place.longitude
-        self.visitCount = 0
+        self.visited = 0
     }
 }

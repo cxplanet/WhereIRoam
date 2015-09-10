@@ -198,7 +198,7 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         }
     }
     
-    func findNearestPlace(latitude: Double, longitude: Double) -> VisitEvent?
+    func findNearestPlace(latitude: Double, longitude: Double) -> [VisitEvent]
     {
         // todo - have this search and return a Place
         var fetchResults : [VisitEvent];
@@ -224,7 +224,11 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         }
         print("elapsed \(start.timeIntervalSinceNow)")
         
-        return nil
+        return []
+    }
+    
+    func handleRegionEvent(region: CLRegion!) {
+
     }
     
     public func enableBackgroundMode() {
@@ -285,7 +289,8 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss ZZZ"
         
-        if let visit = visits.first{
+        for visit in visits
+        {
             let newVisit: VisitEvent = NSEntityDescription.insertNewObjectForEntityForName("VisitEvent", inManagedObjectContext: self.dataHelper!.backgroundContext!) as! VisitEvent
             newVisit.initFromVisitData(visit)
             if let arrDate = formatter.dateFromString(visit[0])
@@ -296,30 +301,54 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
             {
                 newVisit.departure = depDate
             }
-            
-            let visitLocation = CLLocation(latitude: newVisit.latitude.doubleValue, longitude: newVisit.longitude.doubleValue)
-            geoCoder.reverseGeocodeLocation(visitLocation, completionHandler: {(placemarks, error) -> Void in
-                //            if error != nil {
-                //                NSLog("Error while geocoding")
-                //                return
-                //            }
-                if let placemark = placemarks?.first {
-                    let address = ABCreateStringWithAddressDictionary(placemark.addressDictionary!, false)
-                    NSLog(address)
-                }
-                else {
-                    NSLog("Problem with the data received from geocoder")
-                }
-            })
+            newVisit.addressInfo = visit[4]
+            newVisit.latitude = (visit[2] as NSString).doubleValue
+            newVisit.longitude = (visit[3] as NSString).doubleValue
+//            let visitLocation = CLLocation(latitude: newVisit.latitude.doubleValue, longitude: newVisit.longitude.doubleValue)
+//            geoCoder.reverseGeocodeLocation(visitLocation, completionHandler: {(placemarks, error) -> Void in
+//                //            if error != nil {
+//                //                NSLog("Error while geocoding")
+//                //                return
+//                //            }
+//                if let placemark = placemarks?.first {
+//                    let address = ABCreateStringWithAddressDictionary(placemark.addressDictionary!, false)
+//                    NSLog(address)
+//                }
+//                else {
+//                    NSLog("Problem with the data received from geocoder")
+//                }
+//            })
         }
         
+        self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
+        
+    }
+    
+    func degreesToRadians(degrees: Double) -> Double { return degrees * M_PI / 180.0 }
+    func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / M_PI }
+    
+    func getBearingBetweenTwoPoints1(point1 : CLLocation, point2 : CLLocation) -> Double {
+        
+        let lat1 = degreesToRadians(point1.coordinate.latitude)
+        let lon1 = degreesToRadians(point1.coordinate.longitude)
+        
+        let lat2 = degreesToRadians(point2.coordinate.latitude);
+        let lon2 = degreesToRadians(point2.coordinate.longitude);
+        
+        let dLon = lon2 - lon1;
+        
+        let y = sin(dLon) * cos(lat2);
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
+        let radiansBearing = atan2(y, x);
+        
+        return radiansToDegrees(radiansBearing)
     }
     
     func addPlaces() {
         let newPlace: Place = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: self.dataHelper!.backgroundContext!) as! Place
-        newPlace.name = "Home"; newPlace.latitude = 47.688482; newPlace.longitude = 122.373542; newPlace.visitCount = 0;
+        newPlace.name = "Home"; newPlace.latitude = 47.688482; newPlace.longitude = -122.373542; newPlace.visited = 23;
         let newPlace2: Place = NSEntityDescription.insertNewObjectForEntityForName("Place", inManagedObjectContext: self.dataHelper!.backgroundContext!) as! Place
-        newPlace2.name = "Home"; newPlace2.latitude = 47.688482; newPlace2.longitude = 122.373542; newPlace.visitCount = 0;
+        newPlace2.name = "Work"; newPlace2.latitude = 47.598064238; newPlace2.longitude = -122.3285616937; newPlace2.visited = 16;
         
         self.dataHelper!.saveContext(self.dataHelper!.backgroundContext!)
     }
@@ -364,7 +393,12 @@ public class RoamingMgr: NSObject, CLLocationManagerDelegate{
         ["2015-08-25 02:10:23 +0000", "4001-01-01 00:00:00 +0000", "47.6887244163182", "-122.373565203191", "1315 NW 83rd St\nSeattle‎ WA‎ 98117\nUnited States"],
         ["2015-08-25 03:01:11 +0000", "2015-08-25 03:15:11 +0000", "47.6840789002794", "-122.383350307216", "2101 NW 77th St\nSeattle‎ WA‎ 98117\nUnited States"],
         ["2015-08-25 03:19:23 +0000", "4001-01-01 00:00:00 +0000", "47.6886402195891", "-122.373642881869", "1319 NW 83rd St\nSeattle‎ WA‎ 98117\nUnited States"],
-        ["2015-08-25 14:36:01 +0000", "4001-01-01 00:00:00 +0000", "47.7026331467949", "-122.363202288361", "431 NW 100th Pl\nSeattle‎ WA‎ 98177\nUnited States"],
-        ["2015-08-25 14:54:28 +0000", "4001-01-01 00:00:00 +0000", "47.6884831726173", "-122.373449194702", "1315 NW 83rd St\nSeattle‎ WA‎ 98117\nUnited States"],
-        ["2015-08-25 16:24:46 +0000", "4001-01-01 00:00:00 +0000", "47.5980642389237", "-122.328561693772", "505 5th Ave S\nSeattle‎ WA‎ 98104\nUnited States"]]
+        ["2015-08-25 14:36:01 +0000", "2015-08-25 15:25:21 +0000", "47.7026331467949", "-122.363202288361", "431 NW 100th Pl\nSeattle‎ WA‎ 98177\nUnited States"],
+        ["2015-08-25 14:54:28 +0000", "2015-08-25 16:14:28 +0000", "47.6884831726173", "-122.373449194702", "1315 NW 83rd St\nSeattle‎ WA‎ 98117\nUnited States"],
+        ["2015-08-25 16:24:46 +0000", "2015-08-26 00:24:24 +0000", "47.5980642389237", "-122.328561693772", "505 5th Ave S\nSeattle‎ WA‎ 98104\nUnited States"],
+        ["2015-08-25 03:19:23 +0000", "4001-01-01 00:00:00 +0000", "47.6886402195891", "-122.373642881869", "1319 NW 83rd St\nSeattle‎ WA‎ 98117\nUnited States"],
+        ["2015-08-25 14:36:01 +0000", "2015-08-25 15:25:21 +0000", "47.7026331467949", "-122.363202288361", "431 NW 100th Pl\nSeattle‎ WA‎ 98177\nUnited States"],
+        ["2015-08-25 14:54:28 +0000", "2015-08-25 16:14:28 +0000", "47.6884831726173", "-122.373449194702", "1315 NW 83rd St\nSeattle‎ WA‎ 98117\nUnited States"],
+        ["2015-08-25 16:24:46 +0000", "2015-08-26 00:24:24 +0000", "47.5980642389237", "-122.328561693772", "505 5th Ave S\nSeattle‎ WA‎ 98104\nUnited States"]]
+    
 }

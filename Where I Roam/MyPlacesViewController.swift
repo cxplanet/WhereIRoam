@@ -20,14 +20,14 @@ class MyPlacesViewController: ObservationsViewController {
         
         let fetchRequest = NSFetchRequest()
         // Edit the entity name as appropriate.
-        let entity = NSEntityDescription.entityForName("VisitEvent", inManagedObjectContext: dataHelper!.managedObjectContext!)
+        let entity = NSEntityDescription.entityForName("Place", inManagedObjectContext: dataHelper!.managedObjectContext!)
         fetchRequest.entity = entity
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 50
         
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "arrival", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "visited", ascending: false)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -55,4 +55,39 @@ class MyPlacesViewController: ObservationsViewController {
         self.title = "My Places"
     }
     
+    override internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PlaceVisitedCell", forIndexPath: indexPath) as! PlaceVisitedCell
+        let obsItem = fetchedResultsController.objectAtIndexPath(indexPath) as! Place
+        cell.placeName!.text = obsItem.name
+        cell.visitCountLabel!.text = String(format: "Visited %d times", obsItem.visited)
+        return cell
+    }
+    
+    override internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let obsItem = fetchedResultsController.objectAtIndexPath(indexPath) as! Place
+        let _coor = CLLocation(latitude: obsItem.latitude.doubleValue, longitude: obsItem.longitude.doubleValue)
+     self.tableView.endUpdates()
+    }
+    
+    override func setupMapview()
+    {
+        // mapview delegation
+    }
+    
+}
+
+class PlaceVisitedCell : UITableViewCell {
+    
+    @IBOutlet var visitCountLabel : UILabel?
+    @IBOutlet var placeName : UILabel?
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.contentView.layer.cornerRadius = 5.0
+        self.contentView.layer.masksToBounds = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 }
